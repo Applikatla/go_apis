@@ -25,6 +25,9 @@ func HandleFetch(c *gin.Context) {
 
 	var d Data
 	err = json.NewDecoder(resp.Body).Decode(&d)
+	// // for decode we can use
+	// body, _ := io.ReadAll(resp.Body)
+	// json.Unmarshal(body, &d)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to decode JSON"})
 		return
