@@ -26,6 +26,7 @@ func main() {
 	fmt.Println("Response:", string(body))
 	r := gin.Default()
 	r.GET("/fetch", handlers.HandleFetch)
+	r.POST("/post", handlers.HandlePost)
 	r.Run(":8080")
 
 }

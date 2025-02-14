@@ -1,0 +1,9 @@
+Why Use bytes.NewBuffer(jsonData) Instead of Directly Passing jsonData?
+The function http.Post(url, contentType string, body io.Reader) requires the third argument (body) to be an io.Reader.
+
+1️⃣ jsonData is a []byte (slice of bytes)
+When you do json.Marshal(t), it returns a []byte (a byte slice).
+But http.Post expects an io.Reader, not a []byte.
+2️⃣ bytes.NewBuffer(jsonData) Converts []byte into an io.Reader
+bytes.NewBuffer(jsonData) wraps the byte slice and makes it compatible with io.Reader.
+This allows http.Post to stream the request body properly.
