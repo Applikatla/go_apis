@@ -7,3 +7,19 @@ But http.Post expects an io.Reader, not a []byte.
 2️⃣ bytes.NewBuffer(jsonData) Converts []byte into an io.Reader
 bytes.NewBuffer(jsonData) wraps the byte slice and makes it compatible with io.Reader.
 This allows http.Post to stream the request body properly.
+
+
+What is json.Marshal() in Go?
+json.Marshal() converts a Go struct into a JSON string. It is the opposite of json.Unmarshal().
+
+When to Use json.Marshal()?
+✅ If you need a JSON string (e.g., logging, sending as response manually)
+✅ If you are writing to a file or an external API
+✅ If you want more control over encoding
+
+But if you’re using Gin, c.JSON() automatically marshals your struct to JSON, so you don’t need to call json.Marshal() manually.
+
+📌 Key Differences: json.Marshal() vs json.Unmarshal()
+
+json.Marshal(v)	Converts Go struct → JSON string
+json.Unmarshal(data, &v)	Converts JSON string → Go struct
